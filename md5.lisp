@@ -47,7 +47,7 @@
    #:md5-state #:md5-state-p #:make-md5-state
    #:update-md5-state #:finalize-md5-state
    ;; High-Level functions on sequences, streams and files
-   #:md5sum-sequence #:md5sum-stream #:md5sum-file))
+   #:md5sum-sequence #:md5sum-stream #:md5sum-file #:md5sum-string))
 
 (in-package #:md5)
 
@@ -569,6 +569,11 @@ element-type has to be either (unsigned-byte 8) or character."
   "Calculate the MD5 message-digest of the file specified by pathname."
   (declare (optimize (speed 3) (space 0) (debug 0)))
   (with-open-file (stream pathname :element-type '(unsigned-byte 8))
+    (md5sum-stream stream)))
+
+(defun md5sum-string (string)
+  "Calculate the MD5 message-digest of the contents of the string."
+  (with-input-from-string (stream string)
     (md5sum-stream stream)))
 
 #+md5-testing

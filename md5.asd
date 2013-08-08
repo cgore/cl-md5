@@ -19,7 +19,7 @@
 (defsystem md5
   :name "cl-md5"
   :author "Pierre Mai"
-  :version "1.8"
+  :version "1.8.6"
   :maintainer "Kevin M. Rosenberg <kmr@debian.org>"
   :licence "Public Domain"
   :description "MD5 Message Digest function"
